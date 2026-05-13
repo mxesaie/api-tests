@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.*;
 
 public class ApiTest {
 
-    // ✅ TEST GET
+    // TEST GET
     @Test
     public void testGetPost() {
         RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
@@ -18,13 +18,13 @@ public class ApiTest {
         .when()
             .get("/posts/1")
         .then()
-            .statusCode(200)                        // Status code kontrolü
-            .body("id", equalTo(1))                 // Body değer kontrolü
-            .body("title", notNullValue())           // Title boş olmamalı
-            .time(lessThan(5000L));                  // 5 saniye altında cevap
+            .statusCode(200)                        
+            .body("id", equalTo(1))                 
+            .body("title", notNullValue())          
+            .time(lessThan(5000L));                  
     }
 
-    // ✅ TEST POST
+    // TEST POST
     @Test
     public void testCreatePost() {
         RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
@@ -41,8 +41,8 @@ public class ApiTest {
         .when()
             .post("/posts")
         .then()
-            .statusCode(201)                         // Status code kontrolü
-            .body("title", equalTo("Test Baslik"))   // Body değer kontrolü
-            .time(lessThan(5000L));                  // 5 saniye altında cevap
+            .statusCode(201)                         
+            .body("title", equalTo("Test Baslik"))   
+            .time(lessThan(5000L));                  
     }
 }
